@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{base::layout(~{::section})}">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+
+<body>
+	<section>
+		<div class="container p-5" style="color: black; border: none;">
+			<p class="text-center fs-1 fw-bold mt-5 mb-1">Admin Dashboard</p>
+			<div class="row p-5">
+				<div class="col-md-4 mt-2">
+					<a href="/admin/loadAddProduct" class="text-decoration-none">
+						<div class="card card-sh" style="border: 1px solid #B7B7B7; color: #B8001F; transition: transform 0.3s, box-shadow 0.3s;" onmouseover="this.style.transform='scale(1.0)'; this.style.boxShadow='0 4px 20px rgba(0, 0, 0, 0.2)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';">
+							<div class="card-body text-center">
+								<i class="fa-solid fa-square-plus fa-3x" style="color: #B8001F;"></i>
+								<h4>Add Event</h4>
+							</div>
+						</div>
+					</a>
+				</div>
+
+
+				<div class="col-md-4 mt-2">
+					<a href="/admin/category" class="text-decoration-none">
+						<div class="card card-sh" style="border: 1px solid #B7B7B7; color: #B8001F; transition: transform 0.3s, box-shadow 0.3s;" onmouseover="this.style.transform='scale(1.0)'; this.style.boxShadow='0 4px 20px rgba(0, 0, 0, 0.2)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';">
+							<div class="card-body text-center">
+								<i class="fa-solid fa-list fa-3x" style="color: #B8001F;"></i>
+								<h4>Add Genre</h4>
+							</div>
+						</div>
+					</a>
+				</div>
+
+				<div class="col-md-4 mt-2">
+					<a href="/admin/products" class="text-decoration-none">
+						<div class="card card-sh" style="border: 1px solid #B7B7B7; color: #B8001F; transition: transform 0.3s, box-shadow 0.3s;" onmouseover="this.style.transform='scale(1.0)'; this.style.boxShadow='0 4px 20px rgba(0, 0, 0, 0.2)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';">
+							<div class="card-body text-center ">
+								<i class="fa-duotone fa-solid fa-calendar-days fa-3x" style="color: #B8001F;"></i>
+								<h4>View Event</h4>
+							</div>
+						</div>
+					</a>
+				</div>
+
+				<div class="col-md-4 mt-4">
+					<a href="/admin/users?type=1" class="text-decoration-none">
+						<div class="card card-sh" style="border: 1px solid #B7B7B7; color: #B8001F; transition: transform 0.3s, box-shadow 0.3s;" onmouseover="this.style.transform='scale(1.0)'; this.style.boxShadow='0 4px 20px rgba(0, 0, 0, 0.2)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';">
+							<div class="card-body text-center">
+								<i class="fa-solid fa-circle-user fa-3x"></i>
+								<h4>Users</h4>
+							</div>
+						</div>
+					</a>
+				</div>
+
+				<div class="col-md-4 mt-4">
+					<a href="/admin/add-admin" class="text-decoration-none">
+						<div class="card card-sh" style="border: 1px solid #B7B7B7; color: #B8001F; transition: transform 0.3s, box-shadow 0.3s;" onmouseover="this.style.transform='scale(1.0)'; this.style.boxShadow='0 4px 20px rgba(0, 0, 0, 0.2)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';">
+							<div class="card-body text-center">
+								<i class="fa-solid fa-user-plus fa-3x"></i>
+								<h4>Add Admin</h4>
+							</div>
+						</div>
+					</a>
+				</div>
+
+
+			</div>
+		</div>
+	</section>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{base::layout(~{::section})}">
+<head>
+<meta charset="ISO-8859-1">
+<title>Cart Page</title>
+</head>
+<body>
+	<section>
+		<div class="mt-5 p-5" style="width: 70%; margin: 0 auto; ">
+			<div class="card card-sh" style="background-color: #202020; border: 1px solid #B7B7B7;">
+				<div class="card-header text-center"
+					style="background-color: #ffffff;">
+					<p class="fs-1 fw-bold" style="color: #000000">Your fav events</p>
+					<th:block th:if="${session.succMsg}">
+						<p class="text-success fw-bold">[[${session.succMsg}]]</p>
+						<th:block th:text="${@commnServiceImpl.removeSessionMessage()}"></th:block>
+					</th:block>
+					<th:block th:if="${session.errorMsg}">
+						<p class="text-danger fw-bold">[[${session.errorMsg}]]</p>
+						<th:block th:text="${@commnServiceImpl.removeSessionMessage()}"></th:block>
+					</th:block>
+				</div>
+				<div class="card-body" style="background-color: #ffffff;">
+					<table class="table"
+						style="background-color: #ffffff; color: #1ED760;">
+						<thead>
+							<tr style="background-color: #202020;">
+								<th scope="col">No</th>
+								<th scope="col">Image</th>
+								<th scope="col">Event Name</th>
+								<th scope="col">Location</th>
+								<th scope="col">Start Date</th>
+								<th scope="col">Action</th>
+								<!-- เพิ่มคอลัมน์ Action -->
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="cart,c:${carts}">
+								<th scope="row">[[${c.count}]]</th>
+								<td><img
+									th:src="@{'/img/product_img/'+${cart.product.image}}"
+									width="70px" height="70px"></td>
+								<td>[[${cart.product.title}]]</td>
+								<td>[[${cart.product.location}]]</td>
+								<td>[[${cart.product.getFormattedStartDate()}]]</td>
+								<td><a th:href="@{/user/deleteCart/{id}(id=${cart.id})}"
+									class="btn btn-danger">Delete</a></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

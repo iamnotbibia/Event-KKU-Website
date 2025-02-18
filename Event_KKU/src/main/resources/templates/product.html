@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{base::layout(~{::section})}">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section style="color: black;">
+
+		<div class="container-fluid p-4 mt-5 ">
+			<div class="row">
+				<div class="col-md-8 offset-md-2">
+					<p class="fs-1 fw-bold text-center mt-2">Events</p>
+
+					<form action="/products" method="get">
+						<div class="input-group mt-3 ml-0">
+							<input type="text" class="search form-control"
+								style="background-color: #F5F5F7" name="ch"
+								placeholder="Search by title or category"> <input
+								type="datetime-local" class="form-control" name="startDateTime"
+								placeholder="Start Date and Time"> <input
+								type="datetime-local" class="form-control" name="endDateTime"
+								placeholder="End Date and Time">
+							<button class="btn btn-light text-white ms-3 col-md-2">
+								<i class="fa-solid fa-magnifying-glass"></i> Search
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+
+
+		</div>
+
+
+		<div class="container-fluid mt-0.5">
+			<div class="row">
+
+				<div class="col-md-2">
+
+					<div class="card" style="border: none;">
+						<div class="card-body"
+							style="color: #A73B24; border: none; border-radius: 10px;">
+							<div class="list-group">
+
+								<a href="/products"
+									th:classappend="${paramValue==''} ? 'active':''"
+									class="list-group-item list-group-item-action"
+									aria-current="true"> All </a> <a th:each="c:${categories}"
+									th:href="@{'/products?category='+${c.name}}"
+									th:classappend="${paramValue == c.name} ? 'active':''"
+									class="list-group-item list-group-item-action">[[${c.name}]]</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-10 " style="border: none;">
+					<div class="card" style="border: none;">
+
+						<div class="card-body "
+							style="color: #A73B24; border: none; border-radius: 10px;">
+							<div class="row d-flex flex-wrap" style="border: none;">
+								<th:block th:if="${productsSize >0}">
+									<div class="col-md-3  mb-4" style="border: none;"
+										th:each="p:${products}">
+										<div class="card shadow"
+											style="border: 1px solid #B7B7B7; color: #B8001F; transition: transform 0.3s, box-shadow 0.3s;"
+											onmouseover="this.style.transform='scale(1.01)'; this.style.boxShadow='0 4px 20px rgba(0, 0, 0, 0.2)';"
+											onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';">
+											<div class="card-body" style="padding: 10px; color: #b4b4b4;">
+												<a th:href="@{'/product/'+${p.id}}"><img alt=""
+													th:src="@{'img/product_img/'+${p.image}}"
+													class="card-img-top"
+													style="border-radius: 10px 10px 0 0; height: auto; object-fit: cover;"></a>
+												<div class="event-date text-danger mt-1 mb-1 fw-bold"
+													style="font-size: 1rem;">[[${p.getFormattedStartDate()}]]</div>
+												<h5 class="mb-2 fs-6 fw-bold">
+													<a th:href="@{'/product/'+${p.id}}"
+														class="text-decoration-none" style="color: black;">[[${p.title}]]</a>
+												</h5>
+												<div
+													class="short-location text-muted d-flex align-items-baseline">
+													<i class="fas fa-map-marker-alt me-1"></i>[[${p.location}]]
+												</div>
+												<div class="d-flex justify-content-center">
+													<a th:href="@{'/product/'+${p.id}}"
+														style="text-decoration: none; font-weight: bold; color: #ff5722; padding: 5px 20px; margin-top: 5px; border: 2px solid #ff5722; border-radius: 5px; transition: all 0.3s ease-in-out;"
+														onmouseover="this.style.backgroundColor='#ff5722';this.style.color='white';"
+														onmouseout="this.style.backgroundColor='';this.style.color='#ff5722';">View
+														Details</a>
+												</div>
+
+											</div>
+										</div>
+									</div>
+								</th:block>
+							</div>
+
+						</div>
+						<nav aria-label="Page navigation example" style="margin: 0 auto;">
+							<ul class="pagination" style="margin: 10px 0;">
+								<li class="page-item"
+									th:classappend="${isFirst} ? 'disabled':''"><a
+									class="page-link" th:href="@{'/products?pageNo='+${pageNo-1}}"
+									aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+								</a></li>
+
+								<li th:each="i:${#numbers.sequence(1,totalPages)}"
+									class="page-item" th:classappend="${pageNo+1==i}?'active':''"
+									]]><a class="page-link"
+									th:href="@{'/products?pageNo='+${i-1}}">[[${i}]]</a></li>
+
+								<li class="page-item" th:classappend="${isLast} ? 'disabled':''"><a
+									class="page-link" th:href="@{'/products?pageNo='+${pageNo+1}}"
+									aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+								</a></li>
+							</ul>
+						</nav>
+					</div>
+					<!-- Start Pagination -->
+					<div class="row" style="color: black; margin: 10px 0;">
+						<div class="col-md-4">Total Events : [[${totalElements}]]</div>
+						<div class="col-md-6">
+							<th:block th:if="${productsSize>0}">
+						</div>
+						</th:block>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+	</section>
+</body>
+</html>
