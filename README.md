@@ -21,8 +21,8 @@ Event-KKU-Website is a website for displaying events at Khon Kaen University, wh
 - Event organizers can create, edit, and delete their events
 - Event data management system using MySQL
 
-### Gamestore UI - Homepage
-![Gamestore UI - Homepage](https://github.com/iamnotbibia/Game-Store-Website/blob/main/assets/home_game.png?raw=true)
+### Event KKU UI - Homepage
+![Event KKU UI - Homepage](https://github.com/iamnotbibia/Event-KKU-Website/blob/main/assets/home_event.png?raw=true)
 
 ---
 
